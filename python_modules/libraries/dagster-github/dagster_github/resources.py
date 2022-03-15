@@ -61,6 +61,7 @@ class GithubResource:
             if self.hostname is None
             else "https://{}/api/v3/app/installations".format(self.hostname),
             headers=headers,
+            verify=False,
         )
         request.raise_for_status()
         return request.json()
@@ -78,6 +79,7 @@ class GithubResource:
                 self.hostname, installation_id
             ),
             headers=headers,
+            verify=False,
         )
         request.raise_for_status()
         auth = request.json()
@@ -107,6 +109,7 @@ class GithubResource:
             else "https://{}/api/graphql".format(self.hostname),
             json={"query": query, "variables": variables},
             headers=headers,
+            verify=False,
         )
         request.raise_for_status()
         return request.json()
